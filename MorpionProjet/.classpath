@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/java-11-openjdk-amd64">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/nas-wks01/users/uapv2200060/Bureau/JavFxLib/javafx-base-11.jar"/>
+	<classpathentry kind="lib" path="/home/nas-wks01/users/uapv2200060/Bureau/JavFxLib/javafx-controls-11.jar"/>
+	<classpathentry kind="lib" path="/home/nas-wks01/users/uapv2200060/Bureau/JavFxLib/javafx-fxml-11.jar"/>
+	<classpathentry kind="lib" path="/home/nas-wks01/users/uapv2200060/Bureau/JavFxLib/javafx-graphics-11.jar"/>
+	<classpathentry kind="lib" path="/home/nas-wks01/users/uapv2200060/Bureau/JavFxLib/javafx-media-11.jar"/>
+	<classpathentry kind="lib" path="/home/nas-wks01/users/uapv2200060/Bureau/JavFxLib/javafx-swing-11.jar"/>
+	<classpathentry kind="lib" path="/home/nas-wks01/users/uapv2200060/Bureau/JavFxLib/javafx-web-11.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
