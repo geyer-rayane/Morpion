@@ -14,6 +14,7 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 
 public class AccueilControler implements Initializable {
 
@@ -25,7 +26,10 @@ public class AccueilControler implements Initializable {
 
 	@FXML
 	private Menu IA;
-
+    @FXML
+    private Menu Model;
+    @FXML
+    private ListView<String> listView;
 	@FXML
 	private MenuItem lireFichier;
 
@@ -66,7 +70,14 @@ public class AccueilControler implements Initializable {
 	}
 
 	
-	
+	   @FXML
+	   public void voirModels() {
+	        // Créer un MenuItem pour l'exemple
+	        MenuItem menuItem = new MenuItem("Model 1");
+
+	        // Ajouter le texte du MenuItem à la liste
+	        listView.getItems().add(menuItem.getText());
+	    }
 	
 
 

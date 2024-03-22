@@ -12,7 +12,7 @@
    <children>
       <TextField fx:id="TextField" layoutX="85.0" layoutY="105.0" prefHeight="26.0" prefWidth="361.0" />
       <ProgressIndicator fx:id="ProgressBar" layoutX="238.0" layoutY="177.0" progress="0.0" />
-      <Button fx:id="learn" layoutX="234.0" layoutY="262.0" mnemonicParsing="false" onAction="#play" text="START" />
+      
       <Text layoutX="164.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AI LEARNING (GOAT PROCESS)">
          <fill>
             <RadialGradient centerX="0.4887640449438202" centerY="0.5" radius="0.5">
