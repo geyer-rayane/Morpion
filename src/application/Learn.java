@@ -13,10 +13,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
@@ -32,11 +28,11 @@ public class Learn {
 	@FXML
 	private Button learn;
 
-	public void pressStartButton(int size, HashMap<Integer, Coup> mapTrain, int h, double lr, int l, boolean verbose,
+	public   void pressStartButton(int size, HashMap<Integer, Coup> mapTrain, int h, double lr, int l, boolean verbose,
 			double epochs) {
 
 		String directoryPath = "/home/nas-wks01/users/uapv2200060/eclipse-workspace/MorpionProjet/model";
-		String filename = directoryPath.concat("/model_" + l + "_" + h + "_" + lr + ".srl");
+		String filename = directoryPath.concat("/model_" + l + "_" + h + "_" + lr + ".txt");
 
 		File modelFile = new File(filename);
 
@@ -88,7 +84,6 @@ public class Learn {
 						if (verbose) {
 							// updateMessage("Learning completed!");
 							System.out.println("Learning fini ! ");
-							
 						}
 
 						net.save(filename);
@@ -150,15 +145,19 @@ public class Learn {
 		return map;
 	}
 
-	// @FXML
-	    public void play(int h, double lr, int l) {
-	        int size = 9;
-	        HashMap<Integer, Coup> mapTrain = loadCoupsFromFile(
-	                "/home/nas-wks01/users/uapv2200060/eclipse-workspace/MorpionProjet/src/application/train.txt");
-	        boolean verbose = true;
-	        double epochs = 10000;
+	@FXML
+	void play(ActionEvent event) {
+		int size = 9;
+		HashMap<Integer, Coup> mapTrain = loadCoupsFromFile(
+				"/home/nas-wks01/users/uapv2200060/eclipse-workspace/MorpionProjet/src/application/train.txt");
+		int h = 256;
+		double lr = 0.01; // taux d'apprentissage
+		int l = 1; // nombre de couches cachées
+		boolean verbose = true;
+		double epochs = 10000;
 
-	        pressStartButton(size, mapTrain, h, lr, l, verbose, epochs);
-	    }
+		pressStartButton(size, mapTrain, h, lr, l, verbose, epochs);
 
+	}
+	
 }

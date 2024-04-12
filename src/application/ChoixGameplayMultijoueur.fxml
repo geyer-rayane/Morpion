@@ -13,6 +13,7 @@
             <Text layoutX="328.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Configurez vos pseudos " />
             <TextField fx:id="pseudoJoueur2" layoutX="322.0" layoutY="257.0" text="Joueur 2" />
             <TextField fx:id="pseudoJoueur1" layoutX="322.0" layoutY="202.0" text="Joueur 1" />
+            <Button fx:id="boutonJouer" layoutX="382.0" layoutY="314.0" mnemonicParsing="false" onAction="#jouerEnMultijoueur" text="Jouer" />
 			</children>
 		</AnchorPane>
 	</children>

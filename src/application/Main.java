@@ -13,6 +13,8 @@ import javafx.scene.layout.BorderPane;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
+		System.out.println("Console log");
+
         Parent root = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("JavaFX App");

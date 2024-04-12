@@ -21,6 +21,23 @@ public class ChoixGameplayMultijoueurControler {
 
     @FXML
     private TextField pseudoJoueur1;
+    
+    @FXML
+    private Button boutonJouer;
+
+    @FXML
+    void jouerEnMultijoueur(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("JeuMultijoueur.fxml"));
+        Parent root = loader.load();
+        JeuMultijoueurControler controller = loader.getController();
+        controller.setPseudoJoueur1(pseudoJoueur1.getText());
+        controller.setPseudoJoueur2(pseudoJoueur2.getText());
+        controller.configurationPseudo();
+        controller.affichageGrille();
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        currentScene.setRoot(root);
+    }
+
 
 	@FXML
 	void retourVersChoixModeJeu(ActionEvent event) throws IOException {
