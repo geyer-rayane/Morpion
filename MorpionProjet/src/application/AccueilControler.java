@@ -71,12 +71,13 @@ public class AccueilControler implements Initializable {
 
 	
 	   @FXML
-	   public void voirModels() {
-	        // Créer un MenuItem pour l'exemple
-	        MenuItem menuItem = new MenuItem("Model 1");
-
-	        // Ajouter le texte du MenuItem à la liste
-	        listView.getItems().add(menuItem.getText());
+	   public void voirModels() throws IOException {
+			Parent root = FXMLLoader.load(getClass().getResource("Models.fxml"));
+			Scene scene = new Scene(root);
+			Stage primaryStage = new Stage();
+			primaryStage.setTitle("JavaFX App");
+			primaryStage.setScene(scene);
+			primaryStage.show();
 	    }
 	
 

@@ -29,8 +29,8 @@ public class Learn {
 	@FXML
 	private ProgressIndicator ProgressBar;
 
-	@FXML
-	private Button learn;
+    @FXML
+    private Button buttonJouer;
 
 	public void pressStartButton(int size, HashMap<Integer, Coup> mapTrain, int h, double lr, int l, boolean verbose,
 			double epochs) {
@@ -39,7 +39,7 @@ public class Learn {
 		String filename = directoryPath.concat("/model_" + l + "_" + h + "_" + lr + ".srl");
 
 		File modelFile = new File(filename);
-
+		buttonJouer.setVisible(true);
 		if (!modelFile.exists()) {
 			System.out.println(filename);
 
@@ -88,14 +88,18 @@ public class Learn {
 						if (verbose) {
 							// updateMessage("Learning completed!");
 							System.out.println("Learning fini ! ");
+							// Après la tâche est terminée, afficher le bouton
 							
+
 						}
 
 						net.save(filename);
 						return net;
+						
 					}
-
-				};
+				
+	
+};
 				ProgressBar.progressProperty().bind(task.progressProperty());
 
 				// Liaison de la propriété message de la tâche au texte du TextField
@@ -106,6 +110,7 @@ public class Learn {
 						TextField.setText(newValue);
 					}
 				});
+	            task.setOnSucceeded(e -> buttonJouer.setVisible(true));
 				new Thread(task).start();
 			}
 
@@ -148,17 +153,18 @@ public class Learn {
 			System.exit(-1);
 		}
 		return map;
+
 	}
 
 	// @FXML
-	    public void play(int h, double lr, int l) {
-	        int size = 9;
-	        HashMap<Integer, Coup> mapTrain = loadCoupsFromFile(
-	                "/home/nas-wks01/users/uapv2200060/eclipse-workspace/MorpionProjet/src/application/train.txt");
-	        boolean verbose = true;
-	        double epochs = 10000;
+	public void play(int h, double lr, int l) {
+		int size = 9;
+		HashMap<Integer, Coup> mapTrain = loadCoupsFromFile(
+				"/home/nas-wks01/users/uapv2200060/eclipse-workspace/MorpionProjet/src/application/train.txt");
+		boolean verbose = true;
+		double epochs = 10000;
 
-	        pressStartButton(size, mapTrain, h, lr, l, verbose, epochs);
-	    }
+		pressStartButton(size, mapTrain, h, lr, l, verbose, epochs);
+	}
 
 }

@@ -8,12 +8,12 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="353.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Learn">
+<AnchorPane prefHeight="497.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Learn">
    <children>
-      <TextField fx:id="TextField" layoutX="85.0" layoutY="105.0" prefHeight="26.0" prefWidth="361.0" />
-      <ProgressIndicator fx:id="ProgressBar" layoutX="238.0" layoutY="177.0" progress="0.0" />
+      <TextField fx:id="TextField" layoutX="228.0" layoutY="202.0" prefHeight="26.0" prefWidth="361.0" />
+      <ProgressIndicator fx:id="ProgressBar" layoutX="382.0" layoutY="250.0" progress="0.0" />
       
-      <Text layoutX="164.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AI LEARNING (GOAT PROCESS)">
+      <Text layoutX="305.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AI LEARNING (GOAT PROCESS)">
          <fill>
             <RadialGradient centerX="0.4887640449438202" centerY="0.5" radius="0.5">
                <stops>
@@ -22,5 +22,7 @@
                </stops>
             </RadialGradient>
          </fill></Text>
+      <Button fx:id="buttonJouer" layoutX="378.0" layoutY="322.0" 
+      text="Jouer" visible="false" />
    </children>
 </AnchorPane>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="497.0" prefWidth="808.0"
+	xmlns="http://javafx.com/javafx/8.0.171"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="application.AccueilControler">
+	<children>
+		<AnchorPane layoutX="-1.0" prefHeight="497.0"
+			prefWidth="815.0">
+			<children>
+				<MenuBar layoutX="10.0" layoutY="14.0" prefHeight="29.0"
+					prefWidth="796.0">
+					<menus>
+						<Menu fx:id="IA" mnemonicParsing="false" text="IA">
+							<items>
+								<MenuItem fx:id="lireFichier" mnemonicParsing="false"
+									onAction="#lireFile" text="fichier" />
+								<MenuItem mnemonicParsing="false" text="Models" onAction="#voirModels" />
+
+							</items>
+						</Menu>
+						
+					</menus>
+				</MenuBar>
+				<Button fx:id="jeuVsIa" layoutX="270.0" layoutY="176.0"
+					mnemonicParsing="false" onAction="#jouerContreIa"
+					text="Jouez contre une Intelligence Artificielle" />
+				<Button fx:id="jeuEnMulti" layoutX="336.0" layoutY="236.0"
+					mnemonicParsing="false" onAction="#jeuEnMulti"
+					text="Jouez en multijoueur" />
+			</children>
+		</AnchorPane>
+	</children>
+</AnchorPane>
