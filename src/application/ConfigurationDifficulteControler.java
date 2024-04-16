@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class ConfigurationDifficulteControler implements Initializable{
 
@@ -50,6 +51,9 @@ public class ConfigurationDifficulteControler implements Initializable{
 
 	@FXML
 	private Button ButtonValider;
+    @FXML
+    private AnchorPane rootPane;
+
 
 	private static final String CONFIG_FILE_PATH = "/home/nas-wks01/users/uapv2200060/eclipse-workspace/MorpionProjet/src/application/config.txt";
 

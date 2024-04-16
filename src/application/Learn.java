@@ -3,6 +3,7 @@ package application;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -13,6 +14,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
@@ -26,19 +31,19 @@ public class Learn {
 	private ProgressIndicator ProgressBar;
 
 	@FXML
-	private Button learn;
-
-	public   void pressStartButton(int size, HashMap<Integer, Coup> mapTrain, int h, double lr, int l, boolean verbose,
+	private Button buttonJouer;
+	static MultiLayerPerceptron netJeu;
+	public MultiLayerPerceptron pressStartButton(int size, HashMap<Integer, Coup> mapTrain, int h, double lr, int l, boolean verbose,
 			double epochs) {
 
 		String directoryPath = "/home/nas-wks01/users/uapv2200060/eclipse-workspace/MorpionProjet/model";
-		String filename = directoryPath.concat("/model_" + l + "_" + h + "_" + lr + ".txt");
-
+		String filename = directoryPath.concat("/model_" + l + "_" + h + "_" + lr + ".srl");
 		File modelFile = new File(filename);
-
+		
+		buttonJouer.setVisible(true);
 		if (!modelFile.exists()) {
 			System.out.println(filename);
-
+			buttonJouer.setVisible(false);
 			try {
 				if (verbose) {
 					System.out.println();
@@ -53,11 +58,11 @@ public class Learn {
 				}
 				layers[layers.length - 1] = size;
 
-				double error = 0.0;
+				double error = 0.0; // Définir la visibilité à false au début de la méthode
 				MultiLayerPerceptron net = new MultiLayerPerceptron(layers, lr, new SigmoidalTransferFunction());
 
 				if (verbose) {
-					System.out.println("---");
+					System.out.println("---"); // Définir la visibilité à false au début de la méthode
 					System.out.println("Load data ...");
 					System.out.println("---");
 				}
@@ -84,10 +89,14 @@ public class Learn {
 						if (verbose) {
 							// updateMessage("Learning completed!");
 							System.out.println("Learning fini ! ");
+							// Après la tâche est terminée, afficher le bouton
+
 						}
 
 						net.save(filename);
+					
 						return net;
+
 					}
 
 				};
@@ -101,13 +110,21 @@ public class Learn {
 						TextField.setText(newValue);
 					}
 				});
+				task.setOnSucceeded(e -> buttonJouer.setVisible(true));
 				new Thread(task).start();
+				return net;
 			}
 
-			finally {
+			catch(Exception e) {
+				
 			}
+			
 		}
-
+		else {
+			netJeu = MultiLayerPerceptron.load(filename);
+			return netJeu;
+		}
+		return null;
 	}
 
 	public static HashMap<Integer, Coup> loadCoupsFromFile(String file) {
@@ -143,21 +160,24 @@ public class Learn {
 			System.exit(-1);
 		}
 		return map;
-	}
 
+	}
 	@FXML
-	void play(ActionEvent event) {
+	void jeuEnIA(ActionEvent event) throws IOException  {
+	    Parent root = FXMLLoader.load(getClass().getResource("JeuIA.fxml"));
+	    Scene currentScene = ((Node) event.getSource()).getScene();
+	    currentScene.setRoot(root);
+	}
+	// @FXML
+	public void play(int h, double lr, int l) {
 		int size = 9;
 		HashMap<Integer, Coup> mapTrain = loadCoupsFromFile(
 				"/home/nas-wks01/users/uapv2200060/eclipse-workspace/MorpionProjet/src/application/train.txt");
-		int h = 256;
-		double lr = 0.01; // taux d'apprentissage
-		int l = 1; // nombre de couches cachées
 		boolean verbose = true;
 		double epochs = 10000;
 
-		pressStartButton(size, mapTrain, h, lr, l, verbose, epochs);
-
+		 netJeu= pressStartButton(size, mapTrain, h, lr, l, verbose, epochs);
+		 System.out.println("LE NET EST " +netJeu.fLearningRate);
 	}
-	
+
 }
